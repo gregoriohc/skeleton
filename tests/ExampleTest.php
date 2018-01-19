@@ -1,6 +1,6 @@
 <?php
 
-namespace League\Skeleton;
+namespace Gregoriohc\Skeleton;
 
 class ExampleTest extends \PHPUnit\Framework\TestCase
 {

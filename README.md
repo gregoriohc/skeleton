@@ -36,8 +36,8 @@ $ composer require :vendor/:package_name
 ## Usage
 
 ``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
+$skeleton = new Gregoriohc\Skeleton();
+echo $skeleton->echoPhrase('Hello, Gregorio!');
 ```
 
 ## Change log

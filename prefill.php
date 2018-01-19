@@ -14,7 +14,7 @@ $fields = [
     'package_name' =>           ['Package name',          '<package> in https://github.com/vendor/package',  ''],
     'package_description' =>    ['Package very short description',   '',                                     ''],
 
-    'psr4_namespace' =>         ['PSR-4 namespace',       'usually, Vendor\\Package',                        '{package_vendor}\\{package_name}'],
+    'psr4_namespace' =>         ['PSR-4 namespace',       'usually, Vendor\\Package',                        '{package_vendor_studly}\\{package_name_studly}'],
 ];
 
 $values = [];
@@ -26,9 +26,12 @@ $replacements = [
     ':author_website'              => function () use(&$values) { return $values['author_website'] ?: ('https://github.com/' . $values['author_github_username']); },
     ':author_email'                => function () use(&$values) { return $values['author_email'] ?: ($values['author_github_username'] . '@example.com'); },
     ':vendor'                      => function () use(&$values) { return $values['package_vendor']; },
+    ':vendor_studly'               => function () use(&$values) { return $values['package_vendor_studly']; },
     ':package_name'                => function () use(&$values) { return $values['package_name']; },
+    ':package_name_studly'         => function () use(&$values) { return $values['package_name_studly']; },
     ':package_description'         => function () use(&$values) { return $values['package_description']; },
-    'League\\Skeleton'             => function () use(&$values) { return $values['psr4_namespace']; },
+    'Gregoriohc\\Skeleton'         => function () use(&$values) { return $values['psr4_namespace']; },
+    'PackageName'                  => function () use(&$values) { return $values['package_name_studly']; },
 ];
 
 function read_from_console ($prompt) {
@@ -56,6 +59,10 @@ function interpolate($text, $values)
     return $text;
 }
 
+function studly_case($text) {
+    return str_replace(' ', '', ucwords(str_replace(['-', '_'], ' ', $text)))
+}
+
 $modify = 'n';
 do {
     if ($modify == 'q') {
@@ -79,6 +86,9 @@ do {
         if (empty($values[$f])) {
             $values[$f] = $default;
         }
+        if (in_array($f, ['package_vendor', 'package_name'])) {
+            $values[$f . '_studly'] = studly_case($values[$f]);
+        }
     }
     echo "\n";
 
@@ -97,6 +107,7 @@ $files = array_merge(
     glob(__DIR__ . '/*.xml.dist'),
     glob(__DIR__ . '/composer.json'),
     glob(__DIR__ . '/src/*.php'),
+    glob(__DIR__ . '/config/*.php'),
     glob(__DIR__ . '/tests/*.php')
 );
 foreach ($files as $f) {
@@ -106,6 +117,12 @@ foreach ($files as $f) {
     }
     file_put_contents($f, $contents);
 }
+
+$func = $replacements['PackageName'];
+rename(__DIR__ . '/src/PackageName.php', __DIR__ . '/src/' . $func() . '.php');
+
+$func = $replacements[':package_name'];
+rename(__DIR__ . '/config/package_name.php', __DIR__ . '/config/' . $func() . '.php');
 
 echo "Done.\n";
 echo "Now you should remove the file '" . basename(__FILE__) . "'.\n";
