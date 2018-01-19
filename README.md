@@ -12,19 +12,6 @@
 This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
 PSRs you support to avoid any confusion with users and contributors.
 
-## Structure
-
-If any of the following are applicable to your project, then the directory structure should follow industry best practices by being named the following.
-
-```
-bin/        
-config/
-src/
-tests/
-vendor/
-```
-
-
 ## Install
 
 Via Composer
@@ -40,23 +27,27 @@ $skeleton = new Gregoriohc\Skeleton();
 echo $skeleton->echoPhrase('Hello, Gregorio!');
 ```
 
-## Change log
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Testing
+### Testing
 
 ``` bash
 $ composer test
 ```
 
+## Change log
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) for details.
 
-## Security
+### Security
 
 If you discover any security related issues, please email :author_email instead of using the issue tracker.
+
+## Socialware
+
+You're free to use this package, but if it makes it to your production environment I highly appreciate you sharing it on any social network.
 
 ## Credits
 
