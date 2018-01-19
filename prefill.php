@@ -60,7 +60,7 @@ function interpolate($text, $values)
 }
 
 function studly_case($text) {
-    return str_replace(' ', '', ucwords(str_replace(['-', '_'], ' ', $text)))
+    return str_replace(' ', '', ucwords(str_replace(['-', '_'], ' ', $text)));
 }
 
 $modify = 'n';
