@@ -1,6 +1,6 @@
 <?php
 
-namespace Gregoriohc\Skeleton;
+namespace Gregoriohc\Skeleton\Tests;
 
 class ExampleTest extends \PHPUnit\Framework\TestCase
 {

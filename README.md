@@ -27,7 +27,7 @@ $skeleton = new Gregoriohc\Skeleton();
 echo $skeleton->echoPhrase('Hello, Gregorio!');
 ```
 
-### Testing
+## Testing
 
 ``` bash
 $ composer test
@@ -39,7 +39,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) for details.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ### Security
 
